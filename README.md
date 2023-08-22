@@ -1,9 +1,4 @@
 
-
-
-
-
-
 #  Image Classification with Pytorch
 
 This project aims to classify images from the car, truck, and motor dataset obtained from Kaggle and Roboflow. The images are categorized based on vehicle types, including cars, trucks, and motorcycles, using deep learning techniques implemented in PyTorch. The dataset utilized in this project was acquired directly from Kaggle and Roboflow and was initially curated for vehicle classification tasks. We extend our appreciation to both Kaggle and Roboflow for making this dataset available for our research.
@@ -139,7 +134,7 @@ This divergence suggests the presence of overfitting, where the models excel at 
 
 #### Prevent Overfitting in Ensemble Model
 
-By ensembling these models, we create a more robust and generalizable model that leverages the diverse features learned by each architecture. The ResNet model extracts high-level features from images, while the MobileNet v2 model focuses on efficient representations. To mitigate overfitting, we apply transfer learning by freezing the layers of both models and reconfiguring their final classification layers. Additionally, our ensemble architecture incorporates multiple fully connected layers, each followed by normalization and dropout, to enhance model complexity and promote better generalization. The concatenated features from ResNet and MobileNet v2 are then fed into this architecture, allowing the model to learn a combined representation that captures complementary aspects of the data. This approach not only helps prevent overfitting but also improves the model's overall performance and robustness, making it a valuable asset for various computer vision tasks.
+Initially, we introduced an ensemble model denoted as "MyEnsemble," comprising two base models, modelA and modelB, with the aim of creating a synergistic classification system. However, this initial ensemble experienced overfitting issues. To address this, we evolved our approach and crafted the "EnsembleModel_overfit." This refined ensemble design capitalizes on the prowess of both ResNet and MobileNet models to combat overfitting. By strategically incorporating layer normalization, dropout, and finely tuned fully connected layers, we cultivate a model that effectively prevents overfitting while maintaining robust predictive capabilities. This evolution underscores the dynamic nature of refining ensemble architectures to tackle challenges head-on, ultimately delivering more dependable and accurate predictions.
 
 ```bash
 class ResNetModel(nn.Module):
@@ -196,7 +191,7 @@ class EnsembleModel_overfit(nn.Module):
         return output
 
 ```
-
+As evident from the diagram below, the utilization of model assembly effectively mitigates overfitting, resulting in train accuracy values that closely align with test accuracy .
 ![simple_model](content/ensembleoverfit.png)
 
 #### Loss
